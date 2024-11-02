@@ -1,0 +1,290 @@
+html {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-image: url('../images/concrete_background.jpg');
+  background-size: cover;
+  /* 画像を画面全体に拡大 */
+  background-repeat: no-repeat;
+  /* 画像を繰り返さない */
+  background-attachment: fixed;
+  /* スクロール時に背景画像を固定 */
+}
+
+main {
+  margin-top: 50px;
+}
+
+footer {
+  font-size: 12px;
+  text-align: center;
+  margin: 60px 0 30px 0;
+}
+
+* {
+  /* 「＊」はユニバーサルセレクタと呼ばれ、全ての要素に対してスタイルを適用する */
+  box-sizing: border-box;
+  /* 要素の幅や高さを計算する方法を指定する */
+}
+
+:root {
+  /* CSSの擬似クラス、HTMLドキュメントの最上位の要素（通常は<html>要素、今回は<nav>）ここでのスタイルの定義は全体のドキュメントに影響する */
+  --color-primary: rgb(56, 56, 191);
+  /* カスタムプロパティ、「--color-primary」というCSS変数を用意、値は今回は色の指定 */
+}
+
+nav {
+  position: relative;
+  /* 要素の位置を指定する */
+  background: #696969;
+  font-weight: 400;
+  font-size: 0;
+  display: flex;
+  padding: 0;
+  width: 100%;
+}
+
+nav .item {
+  font-size: 0.8rem;
+  display: inline-block;
+  position: relative;
+  padding: 0 20px;
+  cursor: pointer;
+  z-index: 5;
+  min-width: 25%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown {
+  overflow: hidden;
+  list-style: none;
+  position: absolute;
+  padding: 0;
+  width: 100%;
+  left: 0;
+  top: 62px;
+}
+
+.dropdown>div {
+  /* class="dropdown"の直下の子要素のdivのみに適用、ネストされたdivには適用されない */
+  /* つまりHTML,CSS,JavaScriptのリンクのみに適用 */
+  transform: translate(0, -100%);
+  /* (x,y)縦と横に要素を2D空間で移動させるためのプロパティ */
+  /* この場合は、水平方向の移動0、垂直方向に要素の高さの100％だけ上に移動させる */
+  transition: all 0.5s 0.1s;
+  /* 要素が変化する時にアニメーション効果を設定する */
+  /* all：すべてのプロパティの変化に対して適用 */
+  /* 0.5s：トランジション（変化）が0.5秒間で完了する */
+  /* 0.5s：トランジション（変化）の開始が0/1秒遅れる */
+  position: relative;
+  /* 要素の位置を指定する */
+}
+
+.dropdown a {
+  display: block;
+  padding: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: #6b8e23;
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown a:hover {
+  background: #9acd32;
+  text-decoration: none;
+}
+
+.underline {
+  height: 6px;
+  background: #6b8e23;
+  position: absolute;
+  bottom: 0;
+  width: 25%;
+  z-index: 2;
+  pointer-events: none;
+  transition: 0.35s;
+}
+
+nav .item:hover>.dropdown>div {
+  transform: translate(0);
+  /* 要素の位置を変更するプロパティ */
+  /* div要素がホバー時に通常の位置にスライドして表示される */
+}
+
+nav .item:nth-child(1):hover~.underline {
+  /* 「~」はホバーした要素と同じ親要素内にある「underline」クラスを持つ要素にスタイルを適用 */
+  transform: translate(0, 0);
+}
+
+nav .item:nth-child(2):hover~.underline {
+  transform: translate(100%, 0);
+}
+
+nav .item:nth-child(3):hover~.underline {
+  transform: translate(200%, 0);
+}
+
+nav .item:nth-child(4):hover~.underline {
+  transform: translate(300%, 0);
+}
+
+.content {
+  margin: 40px;
+}
+
+h1 {
+  margin: 0;
+}
+
+h1 img {
+  width: 180px;
+  height: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo img {
+  /* 画像は幅250px、高さ幅に合わせてアスペクト比を合わせる */
+  width: 250px;
+  height: auto;
+}
+
+.message {
+  padding: 0 30%;
+  text-align: center;
+  line-height: 2;
+}
+
+.therapist-wrap {
+  /* セラピスト紹介の画像とテキストをflexboxにして横並びにする */
+  display: flex;
+  align-items: center;
+  /* 垂直方向で中央揃え */
+  justify-content: space-between;
+  /* 必要に応じてコンテンツの左右にスペースを作る */
+}
+
+.therapist-img {
+  flex: 1;
+  /* 画像を画面の左半分に配置し全体の半分を占める */
+  display: flex;
+  /* 画像のみをflexboxにする */
+  justify-content: center;
+  align-items: center;
+}
+
+.therapist-img img {
+  max-width: 300px;
+  height: auto;
+}
+
+.therapist-text {
+  flex: 1;
+  /* テキストを画面の左半分に配置し全体の半分を占める */
+  margin-left: 50px;
+}
+
+.aln-center {
+  /* テキストを中央揃えにするスタイル */
+  text-align: center;
+}
+
+ul li::marker {
+  /* 自己紹介文のリストのスタイル */
+  color: #6b8e23;
+  /* マーカーの色を赤に変更 */
+  font-size: 20px;
+  /* マーカーのサイズを大きくする */
+}
+
+.contact-wrap {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.menu-wrap {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+.menu-content {
+  width: 30%;
+  text-align: center;
+}
+
+.menu-content img {
+  display: inline-block;
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.menu-content h4 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.map-wrap {
+  text-align: center;
+}
+
+.menu-text {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.line-button {
+  display: inline-block;
+  background-color: #00c300;
+  /* LINEの緑色 */
+  color: white;
+  /* テキストの色 */
+  padding: 25px 20px;
+  /* 内側の余白 */
+  border-radius: 5px;
+  /* 角を丸く */
+  text-decoration: none;
+  /* 下線を消す */
+  font-weight: bold;
+  /* 太文字に */
+}
+
+.line-button:hover {
+  background-color: #009900;
+  /* ホバー時の色 */
+}
+
+.instagram img {
+  width: 80px;
+  height: auto;
+}
+
+.instagram {
+  margin-left: 200px;
+}
+
+.line {
+  margin-right: 100px;
+}
+
+
+/* レスポンシブ対応 */
